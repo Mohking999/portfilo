@@ -47,4 +47,68 @@ document.addEventListener('DOMContentLoaded', () => {
             blob2.style.transform = `translate(0, ${scrolled * -0.1}px) scale(1)`;
         }
     });
+
+    // Language Switcher Logic
+    const langSelect = document.getElementById('lang-select');
+    
+    function setLanguage(lang) {
+        if (typeof translations === 'undefined' || !translations[lang]) return;
+        
+        // Apply translations
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+        
+        // Handle RTL
+        if (lang === 'ar') {
+            document.documentElement.setAttribute('dir', 'rtl');
+        } else {
+            document.documentElement.removeAttribute('dir');
+        }
+        
+        // Save preference
+        localStorage.setItem('preferredLang', lang);
+    }
+    
+    if (langSelect) {
+        langSelect.addEventListener('change', (e) => {
+            setLanguage(e.target.value);
+        });
+        
+        // Load saved language or default to en
+        const savedLang = localStorage.getItem('preferredLang') || 'en';
+        langSelect.value = savedLang;
+        setLanguage(savedLang);
+    }
+
+    // Theme Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    if (themeToggleBtn) {
+        const themeIcon = themeToggleBtn.querySelector('i');
+        
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            if (theme === 'light') {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            localStorage.setItem('preferredTheme', theme);
+        }
+        
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(newTheme);
+        });
+        
+        // Load saved theme or default to dark
+        const savedTheme = localStorage.getItem('preferredTheme') || 'dark';
+        setTheme(savedTheme);
+    }
 });

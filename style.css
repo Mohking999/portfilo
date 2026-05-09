@@ -10,6 +10,15 @@
     --font-main: 'Outfit', sans-serif;
 }
 
+[data-theme="light"] {
+    --bg-base: #f4f4f9;
+    --text-main: #1a1a24;
+    --text-muted: #555566;
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -450,4 +459,73 @@ footer {
         width: 100%;
         text-align: center;
     }
+}
+
+/* Navigation Actions */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.icon-btn:hover {
+    color: var(--accent);
+}
+
+.lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.lang-switcher select {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-family: var(--font-main);
+    font-weight: 600;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.lang-switcher select option {
+    background: var(--bg-base);
+    color: var(--text-main);
+}
+
+.learning-item {
+    background: transparent; 
+    border: 1px dashed var(--glass-border) !important;
+}
+
+html[dir="rtl"] {
+    text-align: right;
+}
+
+html[dir="rtl"] .nav-links {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+html[dir="rtl"] .btn-text {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .social-links {
+    flex-direction: row-reverse;
 }
