@@ -499,8 +499,6 @@ footer {
     font-weight: 600;
     outline: none;
     cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
 }
 
 .lang-switcher select option {
