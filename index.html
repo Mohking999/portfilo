@@ -35,13 +35,17 @@
             <button id="theme-toggle" class="icon-btn" aria-label="Toggle Dark/Light Mode">
                 <i class="fas fa-sun"></i>
             </button>
-            <div class="lang-switcher">
-                <i class="fas fa-globe" style="color: var(--text-main);"></i>
-                <select id="lang-select" aria-label="Select Language">
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                    <option value="ar">العربية</option>
-                </select>
+            <div class="custom-dropdown" id="lang-dropdown">
+                <button class="dropdown-toggle" id="lang-toggle" aria-label="Select Language">
+                    <i class="fas fa-globe"></i>
+                    <span id="current-lang-text">EN</span>
+                    <i class="fas fa-chevron-down" style="font-size: 0.8rem; margin-left: 5px;"></i>
+                </button>
+                <div class="dropdown-menu glass-panel" id="lang-menu">
+                    <button class="dropdown-item" data-value="en">English</button>
+                    <button class="dropdown-item" data-value="fr">Français</button>
+                    <button class="dropdown-item" data-value="ar">العربية</button>
+                </div>
             </div>
         </div>
     </nav>
@@ -75,6 +79,9 @@
             <div class="projects-grid">
                 <!-- Project Card: My Style -->
                 <div class="project-card glass-panel hidden-element">
+                    <div class="project-image">
+                        <img src="assets/mystyle_mockup_1778371325084.png" alt="My Style">
+                    </div>
                     <div class="project-content">
                         <div class="project-badges">
                             <span class="badge" data-i18n="badge-ai">AI</span>
@@ -92,6 +99,9 @@
 
                 <!-- Project Card: Flutter Test Apps -->
                 <div class="project-card glass-panel hidden-element" style="transition-delay: 0.1s;">
+                    <div class="project-image">
+                        <img src="assets/flutter_mockup_1778371338513.png" alt="Flutter Test Apps">
+                    </div>
                     <div class="project-content">
                         <div class="project-badges">
                             <span class="badge">Flutter</span>
@@ -101,13 +111,16 @@
                         <h3 data-i18n="project2-title">Flutter Test Apps</h3>
                         <p data-i18n="project2-desc">A collection of test applications built with Flutter and Dart to explore and demonstrate various mobile development features.</p>
                         <div class="project-links">
-                            <a href="https://github.com/Mohking999/flutter-test-apps" target="_blank" class="btn-text" data-i18n="project-view-source">View Source &rarr;</a>
+                            <span class="btn-text text-muted" style="cursor: not-allowed; color: var(--text-muted);"><span data-i18n="project-coming-soon">Coming Soon</span></span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 1: Java Demo App -->
                 <div class="project-card glass-panel hidden-element" style="transition-delay: 0.2s;">
+                    <div class="project-image">
+                        <img src="assets/java_mockup_1778371397994.png" alt="Enterprise Demo Application">
+                    </div>
                     <div class="project-content">
                         <div class="project-badges">
                             <span class="badge">Java EE</span>
@@ -117,13 +130,16 @@
                         <h3 data-i18n="project3-title">Enterprise Demo Application</h3>
                         <p data-i18n="project3-desc">A robust multi-module Java Enterprise project demonstrating scalable architecture. Includes discrete modules for EAR deployment, EJB business logic, and Servlet-based presentation layers.</p>
                         <div class="project-links">
-                            <a href="#" class="btn-text" data-i18n="project-view-source">View Source &rarr;</a>
+                            <span class="btn-text text-muted" style="cursor: not-allowed; color: var(--text-muted);"><span data-i18n="project-coming-soon">Coming Soon</span></span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project Card 2: Mohamed Service -->
                 <div class="project-card glass-panel hidden-element" style="transition-delay: 0.1s;">
+                    <div class="project-image">
+                        <img src="assets/ecommerce_mockup_1778371428444.png" alt="Mohamed Service">
+                    </div>
                     <div class="project-content">
                         <div class="project-badges">
                             <span class="badge">E-Commerce</span>
@@ -140,6 +156,9 @@
 
                 <!-- Project Card 3: Adhahi Site -->
                 <div class="project-card glass-panel hidden-element" style="transition-delay: 0.2s;">
+                    <div class="project-image">
+                        <img src="assets/adhahi_mockup_1778371442257.jpg" alt="Adhahi App Preview">
+                    </div>
                     <div class="project-content">
                         <div class="project-badges">
                             <span class="badge">React</span>

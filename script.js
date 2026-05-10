@@ -48,8 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Language Switcher Logic
-    const langSelect = document.getElementById('lang-select');
+    // Custom Language Switcher Logic
+    const langDropdown = document.getElementById('lang-dropdown');
+    const langToggleBtn = document.getElementById('lang-toggle');
+    const currentLangText = document.getElementById('current-lang-text');
+    const langItems = document.querySelectorAll('.dropdown-item');
     
     function setLanguage(lang) {
         if (typeof translations === 'undefined' || !translations[lang]) return;
@@ -69,18 +72,51 @@ document.addEventListener('DOMContentLoaded', () => {
             document.documentElement.removeAttribute('dir');
         }
         
+        // Update UI
+        if (currentLangText) {
+            currentLangText.textContent = lang.toUpperCase();
+        }
+        if (langItems) {
+            langItems.forEach(item => {
+                if (item.getAttribute('data-value') === lang) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+        
         // Save preference
         localStorage.setItem('preferredLang', lang);
     }
     
-    if (langSelect) {
-        langSelect.addEventListener('change', (e) => {
-            setLanguage(e.target.value);
+    if (langDropdown && langToggleBtn) {
+        // Toggle dropdown
+        langToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
         });
+        
+        // Close when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!langDropdown.contains(e.target)) {
+                langDropdown.classList.remove('active');
+            }
+        });
+        
+        // Handle selection
+        if (langItems) {
+            langItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const selectedLang = item.getAttribute('data-value');
+                    setLanguage(selectedLang);
+                    langDropdown.classList.remove('active');
+                });
+            });
+        }
         
         // Load saved language or default to en
         const savedLang = localStorage.getItem('preferredLang') || 'en';
-        langSelect.value = savedLang;
         setLanguage(savedLang);
     }
 
